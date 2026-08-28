@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import DisplayAllJobs from './displayAlljobs';
 import FilterSection from './filterSection';
+import { FaSearch } from "react-icons/fa";
 import Cookies from 'js-cookie';
 import Nav from './nav';
 import './style.css';
@@ -32,8 +33,6 @@ const Jobs = () => {
       try {
         const response = await fetch(api,options);
         const data = await response.json();
-        console.log("DATA=",data);
-        console.log("JOBS ARRAY=",data.jobsArr);
 
 
         if (response.ok){
@@ -59,6 +58,14 @@ const Jobs = () => {
     <br /><br />
     
     <div className='jobs-cont'>
+
+      <div className='w-100'>
+        
+        <input type="text" className="form-control w-50 mx-auto border border-dark" placeholder='emter your job title...' />
+        
+      </div>
+
+      <br /><br />
 
       <div className='container'>
 
