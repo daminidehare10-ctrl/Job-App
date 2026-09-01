@@ -9,6 +9,16 @@ import './style.css';
 
 const Jobs = () => {
 
+  const [loading, SetLoading] = useState(true);
+
+  const getJobs = async () => {
+    const response = await fetch("YOUR_API_URL");
+    const data = await response.json();
+
+    setValues(data);
+
+  }
+
   const [allValues,setValues] = useState({
 
     jobsArr : []
@@ -42,13 +52,15 @@ const Jobs = () => {
       } catch (error) {
 
         console.log( error );
+      } finally{
+        SetLoading(false);
       }
       
 
     }
 
     getAllJobs();
-  },[])
+  },[]);
   
 
   return (
@@ -77,8 +89,12 @@ const Jobs = () => {
 
           <ul className='col-8 '>
             
-            {
-              allValues.jobsArr.map( each => <DisplayAllJobs key={each.id} jobsItem = {each}/> )
+            {loading?(<div className='d-flex justify-content-center align-items-center vh-100'>
+              <div className="spinner-border" role="status">
+                <span className="sr-only">Loading...</span>
+              </div>
+            </div>):
+              (allValues.jobsArr.map( each => <DisplayAllJobs key={each.id} jobsItem = {each}/> ))
             }
 
             

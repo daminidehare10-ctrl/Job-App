@@ -2,14 +2,19 @@ import { FaStar } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
 import { FaBriefcase } from "react-icons/fa";
 import './style.css';
+import { Suspense } from "react";
+import { HiH3 } from "react-icons/hi2";
 
 
 
 const DisplayAllJobs = ({jobsItem}) =>{
 
+
     return(
-    
-        <li style={{listStyle:"none"}} className='p-3 shadow mb-3 rounded border border-secondary'>
+
+        
+
+        <li style={{listStyle:"none"}} className='p-3 shadow mb-3 rounded border border-secondary bg-secondary text-white'>
 
             <div className='d-flex'>
 
@@ -49,3 +54,8 @@ const DisplayAllJobs = ({jobsItem}) =>{
 }
 
 export default DisplayAllJobs;
+
+
+
+
+
