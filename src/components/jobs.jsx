@@ -21,7 +21,10 @@ const Jobs = () => {
 
   const [allValues,setValues] = useState({
 
-    jobsArr : []
+    jobsArr : [],
+    userIn : "",
+    minPackage : [],
+    empType : []
   });
 
 
@@ -29,7 +32,9 @@ const Jobs = () => {
 
     const getAllJobs = async()=>{
 
-      const api = "https://apis.ccbp.in/jobs";
+      const {userIn,minPackage,empType} = allValues;
+
+      const api = `https://apis.ccbp.in/jobs?employment_type=${empType}&minimum_package=${minPackage}&search=${userIn}`;
       const token = Cookies.get("token");
       console.log(token);
 
@@ -43,6 +48,7 @@ const Jobs = () => {
       try {
         const response = await fetch(api,options);
         const data = await response.json();
+        console.log(data.jobs);
 
 
         if (response.ok){
@@ -60,7 +66,18 @@ const Jobs = () => {
     }
 
     getAllJobs();
-  },[]);
+  },[allValues.userIn]);
+
+  const onFiltersJobs = (e) => {
+
+
+    if( e.key === "Enter" ){
+
+      setValues({...allValues,userIn : e.target.value});
+
+    }
+
+  }
   
 
   return (
@@ -73,7 +90,7 @@ const Jobs = () => {
 
       <div className='w-100'>
         
-        <input type="text" className="form-control w-50 mx-auto border border-dark" placeholder='emter your job title...' />
+        <input onKeyUp = {onFiltersJobs} type="text" className="form-control w-50 mx-auto border border-dark" placeholder='emter your job title...' />
         
       </div>
 
