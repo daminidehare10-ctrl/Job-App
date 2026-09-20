@@ -2,6 +2,7 @@ import { FaStar } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
 import { FaBriefcase } from "react-icons/fa";
 import './style.css';
+import { Link } from "react-router-dom";
 import { Suspense } from "react";
 import { HiH3 } from "react-icons/hi2";
 
@@ -10,46 +11,48 @@ import { HiH3 } from "react-icons/hi2";
 const DisplayAllJobs = ({jobsItem}) =>{
 
 
-    return(
+    return( 
 
-        
+        <Link to = {`/jobs/${jobsItem.id}`} style={{textDecoration:"none", color : "black"}}>
 
-        <li style={{listStyle:"none"}} className='p-3 shadow mb-3 rounded border border-secondary bg-secondary text-white'>
 
-            <div className='d-flex'>
+            <li style={{listStyle:"none"}} className='p-3 shadow mb-3 rounded border border-secondary bg-secondary text-white'>
 
-                <img src={jobsItem.company_logo_url} width="70px" />
+                <div className='d-flex'>
 
-                <div className='ml-3'>
-                    <h4>{jobsItem.title}</h4>
-                    <span className="pt-2"><b>{jobsItem.rating}</b></span>
-                    <span className="ml-2"><FaStar className="text-warning"/></span>
-                </div>
-            </div>
+                    <img src={jobsItem.company_logo_url} width="70px" />
 
-            <div className="mt-3 d-flex justify-content-between">
-                <div>
-                    <IoLocationSharp className="mr-2"/>
-                    <span className="mr-3">{jobsItem.location}</span>
-                    <FaBriefcase className="mr-2"/>
-                    <span>{jobsItem.employment_type}</span>
-
+                    <div className='ml-3'>
+                        <h4>{jobsItem.title}</h4>
+                        <span className="pt-2"><b>{jobsItem.rating}</b></span>
+                        <span className="ml-2"><FaStar className="text-warning"/></span>
+                    </div>
                 </div>
 
-                <h5>{jobsItem.package_per_annum}</h5>
-            </div>
+                <div className="mt-3 d-flex justify-content-between">
+                    <div>
+                        <IoLocationSharp className="mr-2"/>
+                        <span className="mr-3">{jobsItem.location}</span>
+                        <FaBriefcase className="mr-2"/>
+                        <span>{jobsItem.employment_type}</span>
 
-            <hr />
+                    </div>
 
-          
+                    <h5>{jobsItem.package_per_annum}</h5>
+                </div>
 
-            <h4> Description </h4>
+                <hr />
 
-            <p>{jobsItem.job_description}</p>
+            
+
+                <h4> Description </h4>
+
+                <p>{jobsItem.job_description}</p>
 
         
             
-        </li>
+            </li>
+        </Link>
     )
 }
 

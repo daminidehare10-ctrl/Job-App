@@ -6,14 +6,14 @@ import './style.css';
 const employmentArr = [
     {
 
-        id : "FULL TIME",
-        title : "Full Time"
+        id : "FULLTIME",
+        title : "FullTime"
         
     },
     {
 
-        id : "PART TIME",
-        title : "Part Time"
+        id : "PARTTIME",
+        title : "PartTime"
         
     },
     {
@@ -49,7 +49,7 @@ const sallaryArr = [
     },
 ]
 
-const FilterSection = () =>{
+const FilterSection = ({getEmpType,getMinPackage}) =>{
 
     const [allValues,setValues] = useState({
         userProfile : {}
@@ -114,7 +114,7 @@ const FilterSection = () =>{
                 {
                     employmentArr.map(each => (
                         <li key={each.id} style={{listStyle : "none"}}>
-                            <input className='mr-3' id = {each.id} type="checkbox"/>
+                            <input onChange={(e)=>{getEmpType(e.target.checked,e.target.value)}} value={each.id} className='mr-3' id = {each.id} type="checkbox"/>
                             <label htmlFor="{each.id}">{each.title}</label>
                         </li>
                     ))
@@ -131,7 +131,7 @@ const FilterSection = () =>{
                 {
                     sallaryArr.map(each => (
                         <li key={each.id} style={{listStyle : "none"}}>
-                            <input name='sallary' className='mr-3' id = {each.id} type="radio"/>
+                            <input onChange={(e)=>{getMinPackage(e.target.value)}} name='sallary' className='mr-3' id = {each.id} value = {each.id} type="radio"/>
                             <label htmlFor="{each.id}">{each.title}</label>
                         </li>
                     ))

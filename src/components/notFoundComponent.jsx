@@ -1,5 +1,6 @@
 import './style.css';
 import NotFoundimage from '../assets/NotFoundimage.jpg';
+import { Link } from 'react-router-dom';
 
 const NotFound = () => (
 
@@ -8,7 +9,11 @@ const NotFound = () => (
 
         <br />
 
-        <h2>The page ypur are requesting is not available</h2>
+        <h2>The page you are requesting is not available</h2>
+
+        <Link to="/">
+            <button className='btn btn-danger'> Go Back </button>
+        </Link>
 
        
     </div>
