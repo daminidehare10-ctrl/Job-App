@@ -2,9 +2,11 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import DisplayAllJobs from './displayAlljobs';
 import FilterSection from './filterSection';
+import jobnotfound from '../assets/jobnotfound.jpg';
 import { FaSearch } from "react-icons/fa";
 import Cookies from 'js-cookie';
 import Nav from './nav';
+import { Link } from 'react-router-dom';
 import './style.css';
 
 const Jobs = () => {
@@ -26,8 +28,7 @@ const Jobs = () => {
     minPackage : [],
     empType : []
   });
-
-
+  
   useEffect(()=>{
 
     const getAllJobs = async()=>{
@@ -67,6 +68,22 @@ const Jobs = () => {
 
     getAllJobs();
   },[allValues.userIn, allValues.empType,allValues.minPackage]);
+
+  const jobsArr = allValues.jobsArr;
+
+  if (!loading && jobsArr.length === 0) {
+    return(
+
+      <div className = "not-found-img">
+        <img src={jobnotfound} width="400px" />
+        <h4>This Job Is Not Available</h4>
+        <Link to = "/jobs">
+          <button className='btn btn-danger' onClick={() =>{
+            setValues({...allValues,jobsArr : [],userIn : "",minPackage : [],empType : []})}}>Found Similer Jobs</button>
+        </Link>
+      </div>
+    );
+  }
 
   const onFiltersJobs = (e) => {
 

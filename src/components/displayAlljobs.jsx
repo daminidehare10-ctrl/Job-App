@@ -1,6 +1,7 @@
 import { FaStar } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
 import { FaBriefcase } from "react-icons/fa";
+import jobnotfound from '../assets/jobnotfound.jpg';
 import './style.css';
 import { Link } from "react-router-dom";
 import { Suspense } from "react";
@@ -10,6 +11,7 @@ import { HiH3 } from "react-icons/hi2";
 
 const DisplayAllJobs = ({jobsItem}) =>{
 
+    
 
     return( 
 
@@ -43,8 +45,6 @@ const DisplayAllJobs = ({jobsItem}) =>{
 
                 <hr />
 
-            
-
                 <h4> Description </h4>
 
                 <p>{jobsItem.job_description}</p>
@@ -52,9 +52,15 @@ const DisplayAllJobs = ({jobsItem}) =>{
         
             
             </li>
+
+            
         </Link>
     )
 }
+
+
+
+
 
 export default DisplayAllJobs;
 
